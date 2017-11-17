@@ -27,7 +27,7 @@ if __name__ == '__main__':
 
     # FIXED
     MERAKI_URL = 'https://dashboard.meraki.com/api/v0/'
-    DNS_O_URL  = 'https://' + USER_PWD + '@updates.dnsomatic.com/nic/update'
+    DNS_O_URL  = 'https://' + USER_PWD + '@updates.opendns.com/nic/update'
 
     # Grab all organizations administrated by this user
     headers = {'X-Cisco-Meraki-API-Key':API_KEY}
@@ -64,7 +64,7 @@ if __name__ == '__main__':
         r = requests.get(DNS_O_URL, data=dns_data, headers=headers)
         # Incorrect DNS-O-Matic Auth
         if r.text == 'badauth':
-            print('Incorect DNS-O-Matic Username & Password')
+            print('Incorect Umbrella Username & Password')
             exit(1)
         # Update results
         if r.text.split(' ')[0] == 'good':
